@@ -1,3 +1,4 @@
+const EventsHandler = require('./main/events');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
@@ -48,21 +49,8 @@ app.on('activate', () => {
   }
 });
 
-// Events
-ipcMain.on('close', (e, options) => {
-  mainWindow.close();
-});
-
-ipcMain.on('maximize', (e, options) => {
-  if (mainWindow.isMaximized()) {
-    mainWindow.unmaximize();
-  } else {
-    mainWindow.maximize();
-  }
-});
-
-ipcMain.on('minimize', (e, options) => {
-  mainWindow.minimize();
+app.whenReady().then(() => {
+  new EventsHandler(mainWindow);
 });
 
 // In this file you can include the rest of your app's specific main process

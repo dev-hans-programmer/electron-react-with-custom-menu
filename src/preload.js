@@ -14,3 +14,7 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
   on: (channel, func) =>
     ipcRenderer.on(channel, (event, ...args) => func(...args)),
 });
+
+contextBridge.exposeInMainWorld('common', {
+  printName: (name) => ipcRenderer.invoke('print:name', name),
+});

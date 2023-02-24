@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import './Home.css';
 
 function Home() {
@@ -12,6 +13,11 @@ function Home() {
     setCounter((prev) => prev - 1);
   }
 
+  const notify = async () => {
+    const value = await common.printName('Hasan');
+    toast(value);
+  };
+
   return (
     <div className='home'>
       <p>Chrome version {versions.chrome()}</p>
@@ -19,6 +25,7 @@ function Home() {
       <p>Counter {counter}</p>
       <button onClick={increment}>+</button>
       <button onClick={decrement}>-</button>
+      <button onClick={notify}>Notify!</button>
     </div>
   );
 }
