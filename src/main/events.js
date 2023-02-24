@@ -6,12 +6,28 @@ class EventsHandler {
     this.register();
   }
   register() {
+    // Handler
+
     ipcMain.handle('print:name', (_, args) => {
       const messaage = `Hey there, this is ${args}`;
       return messaage;
     });
 
-    // Events
+    ipcMain.handle('close', (_, args) => {
+      this.mainWindow.close();
+    });
+    ipcMain.handle('maximize', (_, args) => {
+      if (this.mainWindow.isMaximized()) {
+        this.mainWindow.unmaximize();
+      } else {
+        this.mainWindow.maximize();
+      }
+    });
+    ipcMain.handle('minimize', (_, args) => {
+      this.mainWindow.minimize();
+    });
+
+    // Events : Alternatively
     ipcMain.on('close', (e, options) => {
       this.mainWindow.close();
     });

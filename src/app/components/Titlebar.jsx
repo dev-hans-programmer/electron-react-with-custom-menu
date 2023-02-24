@@ -6,15 +6,18 @@ import './titlebar.css';
 
 function TitleBar() {
   function close() {
-    ipcRenderer.send('close', {});
+    // ipcRenderer.send('close', {});
+    window.app.close();
   }
 
   function maximize() {
-    ipcRenderer.send('maximize', {});
+    window.app.maximize();
+    // ipcRenderer.send('maximize', {});
   }
 
   function minimize() {
-    ipcRenderer.send('minimize', {});
+    window.app.minimize();
+    // ipcRenderer.send('minimize', {});
   }
 
   return (

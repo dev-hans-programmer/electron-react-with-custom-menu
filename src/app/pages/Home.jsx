@@ -14,8 +14,8 @@ function Home() {
   }
 
   const notify = async () => {
-    const value = await common.printName('Hasan');
-    toast(value);
+    const value = await window.common.printName('Hasan');
+    toast.info(value);
   };
 
   return (

@@ -1,9 +1,14 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './app/App.jsx';
+import React from 'react';
+import App from './app/App';
+
+import { createRoot } from 'react-dom/client';
+
+const rootContainer = document.getElementById('root');
+
+const root = createRoot(rootContainer);
 
 function render() {
-  ReactDOM.render(<App />, document.getElementById('root'));
+  root.render(<App />);
 }
 
 render();

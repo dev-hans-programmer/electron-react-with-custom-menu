@@ -18,3 +18,9 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 contextBridge.exposeInMainWorld('common', {
   printName: (name) => ipcRenderer.invoke('print:name', name),
 });
+
+contextBridge.exposeInMainWorld('app', {
+  minimize: () => ipcRenderer.invoke('minimize'),
+  maximize: () => ipcRenderer.invoke('maximize'),
+  close: () => ipcRenderer.invoke('close'),
+});
